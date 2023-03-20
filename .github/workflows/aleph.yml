@@ -1,4 +1,4 @@
-name: Build aleph-elasticsearch
+name: Build aleph
 
 on:
   workflow_dispatch: {}
