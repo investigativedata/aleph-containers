@@ -4,7 +4,7 @@ on:
   workflow_dispatch: {}
   push:
     paths:
-      - aleph-elasticsearch
+      - aleph-elasticsearch/*
 
 permissions:
   packages: write
