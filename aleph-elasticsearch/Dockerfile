@@ -8,6 +8,6 @@ RUN bin/elasticsearch-plugin install --batch repository-s3 \
 COPY k8s-entrypoint.sh /k8s-entrypoint.sh
 COPY --chown=1000 synonames.txt /usr/share/elasticsearch/config/
 
-USER 1001
+USER 1000
 
 ENTRYPOINT [ "/k8s-entrypoint.sh" ]
