@@ -28,7 +28,7 @@ RUN pip3 install --no-cache-dir -q -r /tmp/requirements.txt
 COPY ./aleph/ /aleph
 WORKDIR /aleph
 ENV PYTHONPATH /aleph
-RUN pip install -q -e /aleph
+RUN pip install -q /aleph
 
 ENV ALEPH_WORD_FREQUENCY_URI=https://public.data.occrp.org/develop/models/word-frequencies/word_frequencies-v0.4.1.zip
 ENV ALEPH_FTM_COMPARE_MODEL_URI=https://public.data.occrp.org/develop/models/xref/glm_bernoulli_2e_wf-v0.4.1.pkl
