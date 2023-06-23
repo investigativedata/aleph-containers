@@ -1,4 +1,4 @@
-FROM ghcr.io/investigativedata/ftm-docker:main
+FROM ghcr.io/investigativedata/ftm-docker:latest
 ENV DEBIAN_FRONTEND noninteractive
 LABEL org.opencontainers.image.source = "https://github.com/investigativedata/aleph"
 
