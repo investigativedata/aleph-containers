@@ -1,4 +1,4 @@
-FROM docker.elastic.co/elasticsearch/elasticsearch:8.8.2
+FROM docker.elastic.co/elasticsearch/elasticsearch:8.9.1
 LABEL org.opencontainers.image.source = "https://github.com/investigativedata/aleph-elasticsearch"
 
 RUN bin/elasticsearch-plugin install --batch repository-s3 \
