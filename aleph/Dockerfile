@@ -47,7 +47,14 @@ ENV ALEPH_ELASTICSEARCH_URI=http://elasticsearch:9200/ \
     FTM_COMPARE_FREQUENCIES_DIR=/opt/ftm-compare/word-frequencies/ \
     FTM_COMPARE_MODEL=/opt/ftm-compare/model.pkl
 
-# Run the green unicorn
+# custom pages entrypoint
+RUN apt install curl
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+RUN chown -R 1000:1000 /aleph/aleph/pages
+
 USER 1000
-CMD gunicorn -w 5 -b 0.0.0.0:8000 --log-level info --log-file - aleph.manage:app
+ENTRYPOINT ["/entrypoint.sh"]
+# Run the green unicorn
+CMD ["gunicorn -w 5 -b 0.0.0.0:8000 --log-level info --log-file - aleph.manage:app"]
 
