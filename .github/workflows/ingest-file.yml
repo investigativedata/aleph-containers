@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - aleph-ingest/*
+      - .github/workflows/ingest-file.yml
 
 permissions:
   packages: write

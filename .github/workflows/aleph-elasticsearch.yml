@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - aleph-elasticsearch/*
+      - .github/workflows/aleph-elasticsearch.yml
 
 permissions:
   packages: write
