@@ -1,4 +1,4 @@
-name: Build aleph
+name: Build ingest-file
 
 on:
   workflow_dispatch: {}
