@@ -1,5 +1,5 @@
 all:
 	rm -rf aleph
 	git clone https://github.com/investigativedata/aleph.git
-	cd aleph
-	docker build . -t aleph-local:latest
+	cd aleph && git checkout develop
+	docker build . -t io-aleph:latest
