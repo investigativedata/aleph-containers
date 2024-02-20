@@ -18,8 +18,8 @@ jobs:
           - 3.15.5
           - develop
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           repository: investigativedata/aleph
           path: aleph/aleph
