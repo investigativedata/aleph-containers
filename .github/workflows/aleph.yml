@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         version:
-          # - 3.15.5
+          - 3.15.5
           - main
           - develop
     steps:
