@@ -13,11 +13,7 @@ WORKDIR /ingestors
 RUN pip3 install --no-cache-dir --config-settings editable_mode=compat --use-pep517 -e /ingestors
 RUN chown -R app:app /ingestors
 
-ENV ARCHIVE_TYPE=file \
-    ARCHIVE_PATH=/data \
-    FTM_STORE_URI=postgresql://aleph:aleph@postgres/aleph \
-    REDIS_URL=redis://redis:6379/0 \
-    TESSDATA_PREFIX=/usr/share/tesseract-ocr/4.00/tessdata
+ENV TESSDATA_PREFIX=/usr/share/tesseract-ocr/4.00/tessdata
 
 # USER app
 COPY docker-entrypoint.sh /docker-entrypoint.sh
