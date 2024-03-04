@@ -13,8 +13,6 @@ WORKDIR /ingestors
 RUN pip3 install --no-cache-dir --config-settings editable_mode=compat --use-pep517 -e /ingestors
 RUN chown -R app:app /ingestors
 
-ENV TESSDATA_PREFIX=/usr/share/tesseract-ocr/4.00/tessdata
-
 # USER app
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
