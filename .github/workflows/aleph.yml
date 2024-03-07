@@ -16,6 +16,7 @@ jobs:
     strategy:
       matrix:
         version:
+          - debug/oauth-azure
           - 3.15.5
           - main
           - develop
