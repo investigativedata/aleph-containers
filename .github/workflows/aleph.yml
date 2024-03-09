@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         version:
-          - translations/es
+          - datoteca
           - debug/oauth-azure
           - 3.15.5
           - main
