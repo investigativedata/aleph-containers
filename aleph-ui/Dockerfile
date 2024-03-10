@@ -1,4 +1,4 @@
-FROM ghcr.io/alephdata/aleph-ui:${ALEPH_TAG:-latest} AS builder
+FROM ghcr.io/investigativedata/aleph-ui:${ALEPH_TAG:-latest} AS builder
 
 LABEL org.opencontainers.image.source = "https://github.com/investigativedata/aleph-ui"
 
