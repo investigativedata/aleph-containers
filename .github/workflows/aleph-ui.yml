@@ -95,8 +95,8 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./aleph-ui
-          build-args:
-            - ALEPH_TAG=${{ matrix.version }}
+          build-args: |
+            ALEPH_TAG=${{ matrix.version }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
