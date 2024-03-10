@@ -1,0 +1,104 @@
+name: Build aleph ui
+
+on:
+  workflow_dispatch: {}
+  push:
+    paths:
+      - aleph-ui/*
+      - .github/workflows/aleph-ui.yml
+
+permissions:
+  packages: write
+
+jobs:
+  docker-base:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version:
+          - datoteca
+          - 3.15.5
+          - develop
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: investigativedata/aleph
+          path: aleph-ui/aleph
+          ref: ${{ matrix.version }}
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ghcr.io/investigativedata/aleph-ui-base
+          tags: |
+            type=ref,event=branch
+            type=semver,pattern={{version}}
+            type=sha
+            type=raw,value=${{ matrix.version }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+        with:
+          install: true
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push release
+        uses: docker/build-push-action@v3
+        with:
+          file: ./aleph/ui/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  docker:
+    needs: docker-base
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version:
+          - datoteca
+          - 3.15.5
+          - develop
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ghcr.io/investigativedata/aleph-ui
+          tags: |
+            type=ref,event=branch
+            type=semver,pattern={{version}}
+            type=sha
+            type=raw,value=${{ matrix.version }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+        with:
+          install: true
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push release
+        uses: docker/build-push-action@v3
+        env:
+          ALEPH_TAG: ${{ matrix.version }}
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
