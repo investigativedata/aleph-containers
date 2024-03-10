@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: investigativedata/aleph
-          path: aleph-ui/aleph
+          path: ./aleph-ui/aleph
           ref: ${{ matrix.version }}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -51,7 +51,7 @@ jobs:
       - name: Build and push release
         uses: docker/build-push-action@v3
         with:
-          file: aleph-ui/aleph/ui/Dockerfile
+          context: ./aleph-ui/aleph/ui
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
