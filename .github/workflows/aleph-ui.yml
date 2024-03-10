@@ -51,7 +51,7 @@ jobs:
       - name: Build and push release
         uses: docker/build-push-action@v3
         with:
-          file: ./aleph/ui/Dockerfile
+          file: aleph-ui/aleph/ui/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -96,7 +96,7 @@ jobs:
         env:
           ALEPH_TAG: ${{ matrix.version }}
         with:
-          context: .
+          context: ./aleph-ui
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
