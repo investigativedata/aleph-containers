@@ -19,7 +19,7 @@ RUN groupadd -g 1000 -r app \
     && useradd -m -u 1000 -s /bin/false -g app app
 
 # Install Python dependencies
-RUN pip3 install --no-cache-dir -q -U pip setuptools six lxml
+RUN pip3 install --no-cache-dir -q -U pip setuptools six lxml lxml_html_clean
 
 COPY ./aleph/requirements.txt /tmp/
 RUN pip3 install --no-cache-dir -q -r /tmp/requirements.txt
