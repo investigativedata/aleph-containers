@@ -18,7 +18,7 @@ jobs:
         version:
           - datoteca
           - debug/oauth-azure
-          - 3.15.5
+          - 3.15.6
           - main
           - develop
     steps:
