@@ -5,17 +5,13 @@ LABEL org.opencontainers.image.source = "https://github.com/investigativedata/al
 # build-essential
 RUN apt-get -qq -y update \
     && apt-get -qq --no-install-recommends -y install locales \
-    ca-certificates postgresql-client libpq-dev curl jq unzip \
+    ca-certificates postgresql-client libpq-dev curl jq unzip git \
     python3-pip python3-icu python3-psycopg2 \
     python3-lxml python3-cryptography \
     && apt-get -qq -y autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
-
-RUN apt-get -qq -y install git
-RUN apt-get autoremove -y
-RUN apt-get clean
 
 ENV LANG='en_US.UTF-8'
 
