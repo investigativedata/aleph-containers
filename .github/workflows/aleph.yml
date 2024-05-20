@@ -19,7 +19,7 @@ jobs:
           - datoteca
           - debug/oauth-azure
           - 3.15.6
-          # - 3.15.6-ftg
+          - 3.15.6-ftg
           - main
           - develop
     steps:
