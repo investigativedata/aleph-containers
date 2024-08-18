@@ -17,9 +17,9 @@ jobs:
       matrix:
         version:
           - datoteca
-          - debug/oauth-azure
-          - 3.15.6
-          - 3.15.6-ftg
+          - fix/oauth-azure
+          - 3.17.0
+          - 3.17.0-ftg
           - main
           - develop
     steps:
