@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         version:
-          - datoteca
+          - 3.17.0-datoteca
           - 3.17.0
           - develop
     steps:
